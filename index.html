@@ -31,13 +31,13 @@ nav.scrolled{padding:.8rem 3rem;box-shadow:0 4px 30px rgba(0,0,0,.06)}
 .hero-grain{position:absolute;inset:0;opacity:.02;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* Rotating half-circle containers */
-.spin-circle{position:absolute;top:50%;width:720px;height:720px;transform-origin:center center}
+.spin-circle{position:absolute;top:50%;width:100vh;height:100vh;transform-origin:center center}
 .spin-circle.left{left:0;transform:translate(-50%,-50%)}
 .spin-circle.right{right:0;transform:translate(50%,-50%)}
 
 .spin-circle .ring{position:absolute;top:50%;left:50%;border-radius:50%;border:1.5px solid rgba(168,230,207,.3);pointer-events:none}
-.spin-circle .ring.r1{width:660px;height:660px;margin:-330px 0 0 -330px}
-.spin-circle .ring.r2{width:500px;height:500px;margin:-250px 0 0 -250px;border-style:dashed;opacity:.35}
+.spin-circle .ring.r1{width:95%;height:95%;margin:-47.5% 0 0 -47.5%}
+.spin-circle .ring.r2{width:70%;height:70%;margin:-35% 0 0 -35%;border-style:dashed;opacity:.35}
 
 /* Items on orbit — counter-rotate to stay upright */
 .orb-item{position:absolute;top:50%;left:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:16px;overflow:hidden;cursor:pointer;background:var(--white);box-shadow:0 6px 24px rgba(0,0,0,.12);border:2.5px solid transparent;transition:border-color .3s,box-shadow .3s;z-index:5}
@@ -155,13 +155,9 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 .fu{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}.fu.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:1000px){
-  .spin-circle{width:560px;height:560px}
 }
 @media(max-width:900px){
   section{padding:3.5rem 1.5rem}
-  .spin-circle{width:450px;height:450px}
-  .spin-circle .ring.r1{width:420px;height:420px;margin:-210px 0 0 -210px}
-  .spin-circle .ring.r2{width:310px;height:310px;margin:-155px 0 0 -155px}
   .orb-item{width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:12px}
   .orb-item .oi{font-size:1.3rem}
   .hero-center{width:260px}
@@ -173,9 +169,6 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
   .scroll-ind{display:none}
 }
 @media(max-width:600px){
-  .spin-circle{width:340px;height:340px}
-  .spin-circle .ring.r1{width:310px;height:310px;margin:-155px 0 0 -155px}
-  .spin-circle .ring.r2{width:220px;height:220px;margin:-110px 0 0 -110px}
   .orb-item{width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:10px}
   .orb-item .oi{font-size:1rem}
   .hero-center{width:200px}
@@ -343,11 +336,11 @@ document.getElementById('tP').innerHTML=cardProjects.filter(function(p){return p
 
 // ===== SPINNING ORBIT ITEMS =====
 function getOrbitR(){
+  const vh=window.innerHeight;
   const w=window.innerWidth;
-  if(w<600) return 135;
-  if(w<900) return 185;
-  if(w<1000) return 220;
-  return 290;
+  if(w<600) return vh*0.28;
+  if(w<900) return vh*0.34;
+  return vh*0.42;
 }
 
 // ===== JS-DRIVEN ORBIT SPIN =====
