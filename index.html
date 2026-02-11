@@ -31,13 +31,13 @@ nav.scrolled{padding:.8rem 3rem;box-shadow:0 4px 30px rgba(0,0,0,.06)}
 .hero-grain{position:absolute;inset:0;opacity:.02;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* Rotating half-circle containers */
-.spin-circle{position:absolute;top:50%;width:100vh;height:100vh;transform-origin:center center}
+.spin-circle{position:absolute;top:50%;width:85vh;height:85vh;transform-origin:center center}
 .spin-circle.left{left:0;transform:translate(-50%,-50%)}
 .spin-circle.right{right:0;transform:translate(50%,-50%)}
 
 .spin-circle .ring{position:absolute;top:50%;left:50%;border-radius:50%;border:1.5px solid rgba(168,230,207,.3);pointer-events:none}
-.spin-circle .ring.r1{width:95%;height:95%;margin:-47.5% 0 0 -47.5%}
-.spin-circle .ring.r2{width:70%;height:70%;margin:-35% 0 0 -35%;border-style:dashed;opacity:.35}
+.spin-circle .ring.r1{width:92%;height:92%;margin:-46% 0 0 -46%}
+.spin-circle .ring.r2{width:68%;height:68%;margin:-34% 0 0 -34%;border-style:dashed;opacity:.35}
 
 /* Items on orbit — counter-rotate to stay upright */
 .orb-item{position:absolute;top:50%;left:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:16px;overflow:hidden;cursor:pointer;background:var(--white);box-shadow:0 6px 24px rgba(0,0,0,.12);border:2.5px solid transparent;transition:border-color .3s,box-shadow .3s;z-index:5}
@@ -338,9 +338,9 @@ document.getElementById('tP').innerHTML=cardProjects.filter(function(p){return p
 function getOrbitR(){
   const vh=window.innerHeight;
   const w=window.innerWidth;
-  if(w<600) return vh*0.28;
-  if(w<900) return vh*0.34;
-  return vh*0.42;
+  if(w<600) return vh*0.24;
+  if(w<900) return vh*0.30;
+  return vh*0.36;
 }
 
 // ===== JS-DRIVEN ORBIT SPIN =====
