@@ -96,9 +96,9 @@ section{padding:5rem 3rem}
 .val-name{font-family:var(--fd);font-size:.95rem;font-weight:700;margin-bottom:.35rem;color:var(--white)}
 .val-desc{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.65}
 
-#skills{background:var(--base-bg);padding:4rem 3rem 1.5rem;overflow:hidden}
+#skills{background:var(--base-bg);padding:4rem 3rem 0;overflow:visible}
 .sk-c{max-width:1100px;margin:0 auto}
-.sk-track-wrap{overflow:hidden;margin-top:2rem;margin-bottom:0;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.sk-track-wrap{overflow:hidden;margin-top:2rem;margin-bottom:0;padding:16px 0 24px;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .sk-track{display:flex;gap:1.2rem;width:max-content;animation:skScroll 50s linear infinite}
 .sk-track:hover{animation-play-state:paused}
 @keyframes skScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
