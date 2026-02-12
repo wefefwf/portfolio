@@ -403,28 +403,15 @@ function setActive(idx){
   document.getElementById('cDs').textContent=d.desc;
   document.getElementById('cTc').innerHTML=d.techs.map(function(t){return '<span class="hcard-tech">'+t+'</span>'}).join('');
 
-  // Side images: left = project emoji, right = matched tech from right orbit
+  // Side images: left = project emoji, right = 1:1 paired tech icon
   updateSideSize();
+  var pairedTech=techIcons[idx]||techIcons[0];
   sideL.innerHTML=d.emoji;
   sideL.style.background=d.sideBgL||'rgba(255,255,255,.5)';
-  // Find matching tech icon for right side
-  var matchedTech=null;
-  if(d.techs&&d.techs.length>0){
-    var techName=d.techs[0].toLowerCase();
-    for(var ti=0;ti<techIcons.length;ti++){
-      if(techIcons[ti].label.toLowerCase().indexOf(techName)>=0||techName.indexOf(techIcons[ti].label.toLowerCase())>=0){matchedTech=techIcons[ti];break}
-    }
-  }
-  if(matchedTech){
-    sideR.innerHTML='<span style="font-size:1.6rem;font-weight:800;color:'+(matchedTech.tc||'#fff')+'">'+matchedTech.t+'</span>';
-    sideR.style.background=matchedTech.c;
-    // Highlight matched tech in right orbit
-    document.querySelectorAll('#spinRight .orb-item').forEach(function(el,i){el.classList.toggle('active',i===techIcons.indexOf(matchedTech))});
-  } else {
-    sideR.innerHTML=d.emoji;
-    sideR.style.background=d.sideBgR||'rgba(255,255,255,.5)';
-    document.querySelectorAll('#spinRight .orb-item').forEach(function(el){el.classList.remove('active')});
-  }
+  sideR.innerHTML='<span style="font-size:1.6rem;font-weight:800;color:'+(pairedTech.tc||'#fff')+'">'+pairedTech.t+'</span>';
+  sideR.style.background=pairedTech.c;
+  // Highlight paired tech in right orbit
+  document.querySelectorAll('#spinRight .orb-item').forEach(function(el,i){el.classList.toggle('active',i===idx)});
   sideL.classList.add('show');sideR.classList.add('show');
 
   var btn=document.getElementById('cBtn');
