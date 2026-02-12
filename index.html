@@ -31,7 +31,7 @@ nav.scrolled{padding:.8rem 3rem;box-shadow:0 4px 30px rgba(0,0,0,.06);background
 #hero::after{content:'';position:absolute;width:45vw;height:45vw;bottom:-12%;right:-10%;border-radius:50%;background:radial-gradient(circle,rgba(255,107,74,.2) 0%,transparent 65%);animation:blobFloat 18s ease-in-out infinite reverse;pointer-events:none}
 @keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.06)}66%{transform:translate(-30px,20px) scale(.94)}}
 
-.spin-circle{position:absolute;top:50%;width:95vh;height:95vh;transform-origin:center center}
+.spin-circle{position:absolute;top:50%;width:85vh;height:85vh;transform-origin:center center}
 .spin-circle.left{left:0;transform:translate(-50%,-50%)}
 .spin-circle.right{right:0;transform:translate(50%,-50%)}
 .spin-circle .ring{position:absolute;top:50%;left:50%;border-radius:50%;border:1px solid rgba(255,255,255,.35);pointer-events:none}
@@ -344,7 +344,7 @@ var allProjects=[
 
 // ===== ORBIT =====
 var leftAngle=0,rightAngle=0,leftPaused=false,rightPaused=false,SPEED=0.0015;
-function getOrbitR(){var h=window.innerHeight,w=window.innerWidth;if(w<600)return h*.28;if(w<900)return h*.35;return h*.42}
+function getOrbitR(){var h=window.innerHeight,w=window.innerWidth;if(w<600)return h*.24;if(w<900)return h*.30;return h*.36}
 function createOrbitItems(pid,arr,type){
   var p=document.getElementById(pid);
   p.querySelectorAll('.orb-item').forEach(function(e){e.remove()});
