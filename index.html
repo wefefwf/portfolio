@@ -31,7 +31,7 @@ nav.scrolled{padding:.8rem 3rem;box-shadow:0 4px 30px rgba(0,0,0,.06);background
 #hero::after{content:'';position:absolute;width:45vw;height:45vw;bottom:-12%;right:-10%;border-radius:50%;background:radial-gradient(circle,rgba(255,107,74,.2) 0%,transparent 65%);animation:blobFloat 18s ease-in-out infinite reverse;pointer-events:none}
 @keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.06)}66%{transform:translate(-30px,20px) scale(.94)}}
 
-.spin-circle{position:absolute;top:50%;width:85vh;height:85vh;transform-origin:center center}
+.spin-circle{position:absolute;top:52%;width:80vh;height:80vh;transform-origin:center center}
 .spin-circle.left{left:0;transform:translate(-50%,-50%)}
 .spin-circle.right{right:0;transform:translate(50%,-50%)}
 .spin-circle .ring{position:absolute;top:50%;left:50%;border-radius:50%;border:1px solid rgba(255,255,255,.35);pointer-events:none}
@@ -403,12 +403,28 @@ function setActive(idx){
   document.getElementById('cDs').textContent=d.desc;
   document.getElementById('cTc').innerHTML=d.techs.map(function(t){return '<span class="hcard-tech">'+t+'</span>'}).join('');
 
-  // Side images: same emoji as the selected orbit item, matching bg
+  // Side images: left = project emoji, right = matched tech from right orbit
   updateSideSize();
   sideL.innerHTML=d.emoji;
   sideL.style.background=d.sideBgL||'rgba(255,255,255,.5)';
-  sideR.innerHTML=d.emoji;
-  sideR.style.background=d.sideBgR||'rgba(255,255,255,.5)';
+  // Find matching tech icon for right side
+  var matchedTech=null;
+  if(d.techs&&d.techs.length>0){
+    var techName=d.techs[0].toLowerCase();
+    for(var ti=0;ti<techIcons.length;ti++){
+      if(techIcons[ti].label.toLowerCase().indexOf(techName)>=0||techName.indexOf(techIcons[ti].label.toLowerCase())>=0){matchedTech=techIcons[ti];break}
+    }
+  }
+  if(matchedTech){
+    sideR.innerHTML='<span style="font-size:1.6rem;font-weight:800;color:'+(matchedTech.tc||'#fff')+'">'+matchedTech.t+'</span>';
+    sideR.style.background=matchedTech.c;
+    // Highlight matched tech in right orbit
+    document.querySelectorAll('#spinRight .orb-item').forEach(function(el,i){el.classList.toggle('active',i===techIcons.indexOf(matchedTech))});
+  } else {
+    sideR.innerHTML=d.emoji;
+    sideR.style.background=d.sideBgR||'rgba(255,255,255,.5)';
+    document.querySelectorAll('#spinRight .orb-item').forEach(function(el){el.classList.remove('active')});
+  }
   sideL.classList.add('show');sideR.classList.add('show');
 
   var btn=document.getElementById('cBtn');
