@@ -442,6 +442,13 @@ function attachOrbEvents(){
     el.addEventListener('mouseenter',function(){setActive(parseInt(el.dataset.index))});
     el.addEventListener('click',function(){setActive(parseInt(el.dataset.index))});
   });
+  document.querySelectorAll('#spinRight .orb-item').forEach(function(el){
+    var idx=parseInt(el.dataset.index);
+    var paired=items[idx];
+    if(paired&&paired.type==='deco'){el.classList.add('deco');return}
+    el.addEventListener('mouseenter',function(){setActive(idx)});
+    el.addEventListener('click',function(){setActive(idx)});
+  });
 }
 function buildHero(){
   createOrbitItems('spinLeft',items,'project');
