@@ -41,7 +41,7 @@ nav.scrolled{padding:.8rem 3rem;box-shadow:0 4px 30px rgba(0,0,0,.06);background
 .orb-item{position:absolute;top:50%;left:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:var(--r);overflow:hidden;background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:0 8px 32px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.6);border:1px solid var(--glass-border);transition:all .35s cubic-bezier(.2,.8,.3,1);z-index:5;cursor:pointer}
 .orb-item.deco{cursor:default;opacity:.65}
 .orb-item:not(.deco):hover,.orb-item:not(.deco).active{border-color:var(--coral);box-shadow:0 8px 32px rgba(255,107,74,.25),inset 0 1px 0 rgba(255,255,255,.6);transform:scale(1.1);z-index:15}
-.orb-item .oi{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+.orb-item .oi{width:100%;height:100%;display:block;align-items:center;justify-content:center;font-size:1.6rem}
 .orb-item .ol{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:.55rem;font-weight:700;color:var(--dark-soft);white-space:nowrap;opacity:0;transition:opacity .3s;letter-spacing:.3px;pointer-events:none}
 .orb-item:not(.deco):hover .ol,.orb-item:not(.deco).active .ol{opacity:1}
 
@@ -302,8 +302,8 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 <footer><p>© 2025 dev.folio — Built with ☕ and code</p></footer>
 <script>
 var items = [
-  {emoji:'<img src="images/me.png" style="width:40px;height:40px">',label:'About Me',type:'nav',bg:'#2ec4a0,#1a9e7e',title:'About Me',desc:'풀스택 개발자 홍길동입니다.',techs:['Profile'],link:'#about',sideBgL:'linear-gradient(135deg,#d4f5eb,#b8ecda)',sideBgR:'linear-gradient(135deg,#e8f5e9,#c8e6c9)'},
-  {emoji:'🐾',label:'Reeflo',type:'main',bg:'#2ec4a0,#27b08b',title:'Reeflo — 반려동물 플랫폼',desc:'Spring Boot 기반 반려동물 종합 정보 시스템. 일상 기록, 건강 관리, 추억 보관.',techs:['Spring Boot','Java','Bootstrap'],link:'https://github.com/wefefwf/miniproject',sideBgL:'linear-gradient(135deg,#d4f5eb,#a8e6cf)',sideBgR:'linear-gradient(135deg,#ffe8d6,#ffd4b8)'},
+  {img:'images/me.png',label:'About Me',type:'nav',bg:'#2ec4a0,#1a9e7e',title:'About Me',desc:'안녕하세요. 풀스택 개발자 김도영입니다.',techs:['Profile'],link:'#about',sideBgL:'linear-gradient(135deg,#d4f5eb,#b8ecda)',sideBgR:'linear-gradient(135deg,#e8f5e9,#c8e6c9)'},
+  {img:'images/mini.jpg',label:'Reeflo',type:'main',bg:'#2ec4a0,#27b08b',title:'Reeflo — 반려동물 플랫폼',desc:'Spring Boot 기반 반려동물 종합 정보 시스템. 일상 기록, 건강 관리, 추억 보관.',techs:['Spring Boot','Java','Bootstrap'],link:'https://github.com/wefefwf/miniproject',sideBgL:'linear-gradient(135deg,#d4f5eb,#a8e6cf)',sideBgR:'linear-gradient(135deg,#ffe8d6,#ffd4b8)'},
   {emoji:'🖼️',label:'',type:'deco',bg:'#fce4ec,#f48fb1'},
   {emoji:'🛒',label:'Shopping',type:'main',bg:'#ff6b4a,#ff9a85',title:'E-Commerce Platform',desc:'실시간 결제 시스템과 재고 관리 기능이 포함된 풀스택 이커머스 플랫폼.',techs:['React','Node.js','MongoDB'],link:'https://github.com/wefefwf/portfolio',sideBgL:'linear-gradient(135deg,#fff3e0,#ffe0b2)',sideBgR:'linear-gradient(135deg,#fce4ec,#f8bbd0)'},
   {emoji:'🎨',label:'',type:'deco',bg:'#b39ddb,#9575cd'},
@@ -321,7 +321,7 @@ var items = [
 ];
 
 var techIcons = [
-  {t:'Jv',c:'#ED8B00',label:'Java'},{t:'SB',c:'#6DB33F',label:'Spring'},
+  {img:'images/me2.png',label:'Java'},{t:'SB',c:'#6DB33F',label:'Spring'},
   {t:'JS',c:'#F7DF1E',tc:'#000',label:'JavaScript'},{t:'HT',c:'#E34F26',label:'HTML'},
   {t:'CS',c:'#1572B6',label:'CSS'},{t:'Bs',c:'#7952B3',label:'Bootstrap'},
   {t:'Py',c:'#3776AB',label:'Python'},{t:'Re',c:'#61DAFB',tc:'#000',label:'React'},
@@ -369,10 +369,12 @@ function createOrbitItems(pid,arr,type){
     el.dataset.index=i;
     el.dataset.baseAngle=((2*Math.PI*i)/n).toString();
     if(type==='project'){
-      var bgStr=d.bg?'background:linear-gradient(135deg,'+d.bg+')':'';
-      el.innerHTML='<div class="oi" style="'+bgStr+'">'+d.emoji+'</div>'+(d.label?'<span class="ol">'+d.label+'</span>':'');
-    } else {
-      el.innerHTML='<div class="oi" style="background:'+d.c+'"><span style="color:'+(d.tc||'#fff')+';font-size:.7rem;font-weight:700">'+d.t+'</span></div><span class="ol">'+d.label+'</span>';
+      if(d.img){
+        el.innerHTML='<div class="oi" style="background:url('+d.img+') center/cover no-repeat"></div>'+(d.label?'<span class="ol">'+d.label+'</span>':'');
+      }else{
+        var bgStr=d.bg?'background:linear-gradient(135deg,'+d.bg+')':'';
+        el.innerHTML='<div class="oi" style="'+bgStr+'">'+d.emoji+'</div>'+(d.label?'<span class="ol">'+d.label+'</span>':'');
+      }
     }
     p.appendChild(el);
   });
@@ -419,7 +421,11 @@ function setActive(idx){
   // Side images: left = project emoji, right = 1:1 paired tech icon
   updateSideSize();
   var pairedTech=techIcons[idx]||techIcons[0];
-  sideL.innerHTML=d.emoji;
+  if(d.img){
+    sideL.innerHTML='<div style="width:100%;height:100%;background:url('+d.img+') center/cover no-repeat"></div>';
+  }else{
+    sideL.innerHTML=d.emoji;
+  }
   sideL.style.background=d.sideBgL||'rgba(255,255,255,.5)';
   sideR.innerHTML='<span style="font-size:1.6rem;font-weight:800;color:'+(pairedTech.tc||'#fff')+'">'+pairedTech.t+'</span>';
   sideR.style.background=pairedTech.c;
