@@ -561,18 +561,48 @@ document.getElementById('tP').innerHTML=toyP.map(function(p,i){return mkCard(p,i
 document.querySelectorAll('.pc').forEach(function(c){
   c.addEventListener('click',function(){openModal(parseInt(c.dataset.idx))});
 });
+document.addEventListener('click',function(e){
+  var card=e.target.closest('.pc');
+  if(!card)return;
 
+  var idx=card.dataset.idx;
+  var p=allProjects[idx];
+
+  document.getElementById('modalTag').textContent=p.type==='main'?'MAIN PROJECT':'TOY PROJECT';
+  document.getElementById('modalTitle').textContent=p.title;
+  document.getElementById('modalDesc').textContent=p.desc;
+  document.getElementById('modalTechs').innerHTML=p.techs.map(function(t){
+    return '<span class="modal-tech">'+t+'</span>'
+  }).join('');
+
+  document.getElementById('modalBtn').href=p.link;
+
+  // ⭐ 여기 추가
+  if(p.video){
+    modalVideo.src=p.video;
+    modalVideo.style.display='block';
+    modalVideo.play();
+    modalImg.style.background='none';
+  }else{
+    modalVideo.pause();
+    modalVideo.style.display='none';
+    modalImg.style.background='';
+    modalImg.textContent=p.emoji;
+  }
+
+  document.getElementById('modalOverlay').classList.add('show');
+});
 // ===== MODAL =====
 
 const modalOverlay = document.getElementById('modalOverlay');
 const modalClose = document.getElementById('modalClose');
-const modalVideo = document.getElementById('modalVideo');
-
+var modalVideo = document.getElementById('modalVideo');
+var modalImg = document.getElementById('modalImg');
 
 
 function openModal(idx){
   var p=allProjects[idx];if(!p)return;
-  document.getElementById('modalImg').innerHTML='<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,rgba(46,196,160,.25),rgba(255,107,74,.15));position:relative">'+p.emoji+'<div style="position:absolute;bottom:12px;right:16px;font-size:.6rem;color:#6b7280;font-style:italic">영상 캡쳐 이미지가 들어갈 자리</div></div>';
+  document.getElementById('modalImg').innerHTML=`<video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:6px;"><source src="${project.video}" type="video/mp4"></video>`;
   document.getElementById('modalTag').textContent=p.type==='main'?'MAIN PROJECT':'TOY PROJECT';
   document.getElementById('modalTitle').textContent=p.title;
   document.getElementById('modalDesc').textContent=p.desc;
