@@ -265,7 +265,9 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-close" id="modalClose">✕</button>
-    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-img" id="modalImg">
+      <video id="modalVideo" width="100%" height="100%" style="display:none" autoplay muted loop></video>
+    </div>
     <div class="modal-body">
       <div class="modal-tag" id="modalTag"></div>
       <div class="modal-title" id="modalTitle"></div>
@@ -344,12 +346,68 @@ var skillsData=[
 ];
 
 var allProjects=[
-  {title:'Reeflo — 반려동물 플랫폼',desc:'Spring Boot 기반 반려동물 종합 정보 시스템입니다. 반려동물의 일상 기록, 건강 관리, 추억 보관 기능을 하나의 플랫폼에서 제공합니다.',techs:['Spring Boot','Java','Bootstrap'],link:'https://github.com/wefefwf/miniproject',emoji:'🐾',bg:'t1',type:'main'},
-  {title:'Nextage - 옷 수선/제작 역경매 플랫폼',desc:'Spring Boot 기반의 패션 수선·리폼·제작 C2B 역경매 플랫폼입니다.',techs:['Spring Boot','Java','Bootstrap'],link:'https://github.com/wefefwf/Final-Project-Nextage',emoji:'🛒',bg:'t2',type:'main'},
-  {title:'미정',desc:'실시간 데이터 시각화 대시보드. Python FastAPI 백엔드와 D3.js 인터랙티브 차트로 구성.',techs:['Next.js','Python','D3.js'],link:'https://github.com/wefefwf/portfolio',emoji:'📊',bg:'t3',type:'main'},
-  {title:'Todolist',desc:'Spring Boot와 JPA를 기반으로 제작된, 캘린더 앱 감성의 할 일 관리 서비스. 기본 CRUD 구현',techs:['Spring Boot','Jpa','MariaDB'],link:'https://github.com/wefefwf/JPA-toy-project-1',emoji:'📝',bg:'t4',type:'toy'},
-  {title:'My Sketchbook Diary',desc:'JPA 기반의 따스한 어린 시절 스케치북 감성의 다이어리. 기본 CRUD 구현',techs:['Spring Boot','Jpa','MariaDB'],link:'https://github.com/wefefwf/JPA-toy-project-2',emoji:'🌤️',bg:'t5',type:'toy'},
-  {title:'My Treasure Archive',desc:'Spring Boot 기반의 내가 좋아하는 노래, 영화, 맛집을 기록하는 개인 취향 아카이브 프로젝트입니다.',techs:['Spring Boot','Java','Mysql'],link:'https://github.com/wefefwf/MyBatis-toy-project-1',emoji:'✍️',bg:'t6',type:'toy'}
+  {
+    title:'Reeflo — 반려동물 플랫폼',
+    desc:'반려동물 일상 기록과 건강 관리, 추억 보관 기능을 제공하는 플랫폼\n\n문제: 반려동물 정보를 체계적으로 관리하기 어려움\n해결: 일상 기록, 건강 관리, 추억 저장 기능을 통합한 반려동물 관리 플랫폼 설계\n',
+    techs:['Spring Boot','Java','Bootstrap'],
+    link:'https://github.com/wefefwf/miniproject',
+    emoji:'🐾',
+    bg:'t1',
+    type:'main'
+  },
+
+  {
+    title:'Nextage - 옷 수선/제작 역경매 플랫폼',
+    desc:'프로젝트 소개: 수선 의뢰자와 공급업체를 연결하는 C2B 역경매 플랫폼\n\n문제: 수선 서비스 가격 기준이 불투명하고 여러 업체 견적 비교가 어려움\n해결: 의뢰자가 수선 요청을 등록하고 공급업체가 입찰하는 역경매 구조 설계\n',
+    techs:['Spring Boot','Java','Bootstrap'],
+    link:'https://github.com/wefefwf/Final-Project-Nextage',
+    emoji:'🛒',
+    bg:'t2',
+    type:'main'
+  },
+
+  {
+    title:'미정',
+    desc:'데이터를 시각적으로 분석할 수 있는 대시보드\n\n문제: 복잡한 데이터를 직관적으로 파악하기 어려움\n해결: 인터랙티브 차트를 활용한 데이터 시각화 기능 구현\n',
+    techs:['Next.js','Python','D3.js'],
+    link:'https://github.com/wefefwf/portfolio',
+    emoji:'📊',
+    bg:'t3',
+    type:'main'
+  },
+
+  {
+    title:'Todolist',
+    desc:'일정과 할 일을 관리하는 캘린더형 서비스\n\n문제: 할 일을 체계적으로 관리하기 어려움\n해결: CRUD 기반 일정 관리 기능과 캘린더 UI 구현\n',
+    techs:['Spring Boot','Jpa','MariaDB'],
+    link:'https://github.com/wefefwf/JPA-toy-project-1',
+    emoji:'📝',
+    bg:'t4',
+    type:'toy',
+    video: 'videos/todolist.mp4'
+  },
+
+  {
+    title:'My Sketchbook Diary',
+    desc:'감성을 기록하는 스케치북 스타일 다이어리\n\n문제: 일상을 자유롭게 기록하고 관리할 공간이 필요함\n해결: CRUD 기반 일기 작성 및 기록 관리 기능 구현\n',
+    techs:['Spring Boot','Jpa','MariaDB'],
+    link:'https://github.com/wefefwf/JPA-toy-project-2',
+    emoji:'🌤️',
+    bg:'t5',
+    type:'toy',
+    video: 'videos/diary.mp4'
+  },
+
+  {
+    title:'My Treasure Archive',
+    desc:'좋아하는 콘텐츠를 기록하는 개인 아카이브\n\n문제: 취향 콘텐츠를 체계적으로 정리하기 어려움\n해결: 영화, 음악, 맛집 등을 기록하고 관리하는 아카이브 서비스 구현\n',
+    techs:['Spring Boot','Java','Mysql'],
+    link:'https://github.com/wefefwf/MyBatis-toy-project-1',
+    emoji:'✍️',
+    bg:'t6',
+    type:'toy',
+    video: 'videos/mytreasurearchive.mp4'
+  }
 ];
 
 // ===== ORBIT =====
@@ -494,7 +552,7 @@ skillsData.forEach(function(s){track.appendChild(mk(s))});
 
 // ===== PROJECT CARDS =====
 function mkCard(p,i){
-  return '<div class="pc fu" data-idx="'+i+'"><div class="pc-th"><div class="pc-ti '+p.bg+'">'+p.emoji+'</div><div class="pc-ov"><span>Click to view</span></div></div><div class="pc-if"><div class="pc-tg">'+p.techs.map(function(t,j){return '<span class="pc-t'+(j===1?' og':'')+'">'+t+'</span>'}).join('')+'</div><div class="pc-tt">'+p.title+'</div><div class="pc-ds">'+p.desc.substring(0,55)+'...</div></div></div>';
+  return '<div class="pc fu" data-idx="'+i+'"><div class="pc-th"><div class="pc-ti '+p.bg+'">'+p.emoji+'</div><div class="pc-ov"><span>Click to view</span></div></div><div class="pc-if"><div class="pc-tg">'+p.techs.map(function(t,j){return '<span class="pc-t'+(j===1?' og':'')+'">'+t+'</span>'}).join('')+'</div><div class="pc-tt">'+p.title+'</div><div class="pc-ds">'+p.desc.substring(0,55).replace(/\n/g,'<br>')+'...</div></div></div>';
 }
 var mainP=allProjects.filter(function(p){return p.type==='main'});
 var toyP=allProjects.filter(function(p){return p.type==='toy'});
@@ -505,6 +563,13 @@ document.querySelectorAll('.pc').forEach(function(c){
 });
 
 // ===== MODAL =====
+
+const modalOverlay = document.getElementById('modalOverlay');
+const modalClose = document.getElementById('modalClose');
+const modalVideo = document.getElementById('modalVideo');
+
+
+
 function openModal(idx){
   var p=allProjects[idx];if(!p)return;
   document.getElementById('modalImg').innerHTML='<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,rgba(46,196,160,.25),rgba(255,107,74,.15));position:relative">'+p.emoji+'<div style="position:absolute;bottom:12px;right:16px;font-size:.6rem;color:#6b7280;font-style:italic">영상 캡쳐 이미지가 들어갈 자리</div></div>';
@@ -551,6 +616,23 @@ var clickableIdxs=[];items.forEach(function(d,i){if(d.type!=='deco')clickableIdx
 var ciI=0,cy=setInterval(function(){ciI=(ciI+1)%clickableIdxs.length;setActive(clickableIdxs[ciI])},4000);
 document.getElementById('hero').addEventListener('mouseenter',function(){clearInterval(cy)});
 document.getElementById('hero').addEventListener('mouseleave',function(){cy=setInterval(function(){ciI=(ciI+1)%clickableIdxs.length;setActive(clickableIdxs[ciI])},4000)});
+</script>
+<script>
+// ===== MODAL 기능 =====
+video: 'videos/portfolio.mp4'
+
+// ===== Scroll Top 버튼 =====
+var scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', function(){
+  if(window.scrollY > 400){
+    scrollTopBtn.classList.add('show');
+  } else {
+    scrollTopBtn.classList.remove('show');
+  }
+});
+scrollTopBtn.addEventListener('click', function(){
+  window.scrollTo({ top:0, behavior:'smooth' });
+});
 </script>
 </body>
 </html>
