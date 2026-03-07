@@ -186,6 +186,23 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 .fu{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}.fu.visible{opacity:1;transform:translateY(0)}
 @media(max-width:900px){section{padding:3.5rem 1.5rem}.orb-item{width:48px;height:48px;margin:-24px 0 0 -24px}.hero-center{width:280px}.hlogo-m{font-size:2.4rem}.hlogo-s{font-size:.85rem;letter-spacing:5px}.hcard{padding:1.2rem}.side-lbl{display:none}.ab-r{flex-direction:column;text-align:center}.ab-st{justify-content:center}.pg3{grid-template-columns:1fr}.val-grid{grid-template-columns:1fr}.scroll-ind{display:none}.hero-side-img{display:none}}
 @media(max-width:600px){.orb-item{width:40px;height:40px;margin:-20px 0 0 -20px}.hero-center{width:220px}.hlogo-m{font-size:1.8rem}.hlogo-s{font-size:.7rem;letter-spacing:3px}.hero-dots{bottom:1rem}}
+.pc-th video { width:100%; height:100%; object-fit:cover; }
+.pc-th {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 비율 유지 (높이/너비 = 9/16) */
+  overflow: hidden;
+  border-radius: 6px; /* 모서리 살짝 둥글게 */
+}
+
+.pc-th img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지 비율 유지하면서 잘라서 채우기 */
+}
 </style>
 </head>
 <body>
@@ -384,7 +401,8 @@ var allProjects=[
     emoji:'📝',
     bg:'t4',
     type:'toy',
-    video: 'videos/todolist.mp4'
+    video: 'videos/todolist.mp4',
+    thumbnail: 'images/todolist2.jpg'
   },
 
   {
@@ -395,7 +413,8 @@ var allProjects=[
     emoji:'🌤️',
     bg:'t5',
     type:'toy',
-    video: 'videos/diary.mp4'
+    video: 'videos/diary.mp4',
+    thumbnail: 'images/diary.jpg'
   },
 
   {
@@ -406,7 +425,8 @@ var allProjects=[
     emoji:'✍️',
     bg:'t6',
     type:'toy',
-    video: 'videos/mytreasurearchive.mp4'
+    video: 'videos/mytreasurearchive.mp4',
+    thumbnail: 'images/mytreasurearchive.jpg'
   }
 ];
 
@@ -551,8 +571,21 @@ skillsData.forEach(function(s){track.appendChild(mk(s))});
 })();
 
 // ===== PROJECT CARDS =====
-function mkCard(p,i){
-  return '<div class="pc fu" data-idx="'+i+'"><div class="pc-th"><div class="pc-ti '+p.bg+'">'+p.emoji+'</div><div class="pc-ov"><span>Click to view</span></div></div><div class="pc-if"><div class="pc-tg">'+p.techs.map(function(t,j){return '<span class="pc-t'+(j===1?' og':'')+'">'+t+'</span>'}).join('')+'</div><div class="pc-tt">'+p.title+'</div><div class="pc-ds">'+p.desc.substring(0,55).replace(/\n/g,'<br>')+'...</div></div></div>';
+function mkCard(p, i){
+  return `
+  <div class="pc fu" data-idx="${i}">
+    <div class="pc-th">
+      <img src="${p.thumbnail}" alt="${p.title} thumbnail" />
+      <div class="pc-ov"><span>Click to view</span></div>
+    </div>
+    <div class="pc-if">
+      <div class="pc-tg">
+        ${p.techs.map((t,j)=>`<span class="pc-t${j===1?' og':''}">${t}</span>`).join('')}
+      </div>
+      <div class="pc-tt">${p.title}</div>
+      <div class="pc-ds">${p.desc.substring(0,55).replace(/\n/g,'<br>')}...</div>
+    </div>
+  </div>`;
 }
 var mainP=allProjects.filter(function(p){return p.type==='main'});
 var toyP=allProjects.filter(function(p){return p.type==='toy'});
