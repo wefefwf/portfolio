@@ -314,13 +314,13 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 <script>
 var items = [
   {img:'images/me.png',label:'About Me',type:'nav',bg:'#2ec4a0,#1a9e7e',title:'About Me',desc:'안녕하세요. 풀스택 개발자 김도영입니다.',techs:['Profile'],link:'#about',sideBgL:'linear-gradient(135deg,#d4f5eb,#b8ecda)',sideBgR:'linear-gradient(135deg,#e8f5e9,#c8e6c9)'},
-  {img:'images/mini.jpg',label:'Reeflo',type:'main',bg:'#2ec4a0,#27b08b',title:'Reeflo — 반려동물 플랫폼',desc:'Spring Boot 기반 반려동물 종합 정보 시스템. 일상 기록, 건강 관리, 추억 보관.',techs:['Spring Boot','Java','Bootstrap'],link:'https://github.com/wefefwf/miniproject',sideBgL:'linear-gradient(135deg,#d4f5eb,#a8e6cf)',sideBgR:'linear-gradient(135deg,#ffe8d6,#ffd4b8)'},
+  {img:'images/career.png',label:'Career',type:'nav',bg:'#7e57c2,#b39ddb',title:'경력 & 학력',desc:'Designer to Developer: 성장 기록',techs:['Experience'],link:'#experience',sideBgL:'linear-gradient(135deg,#ede7f6,#d1c4e9)',sideBgR:'linear-gradient(135deg,#e8eaf6,#c5cae9)'},
   {t:'HT',c:'#E34F26',type:'deco'},
   {img:'images/nextage.png',label:'Shopping',type:'main',bg:'#ff6b4a,#ff9a85',title:'Nextage',desc:'Spring Boot · REST API · MySQL 기반의 패션 수선·리폼·제작 C2B 역경매 플랫폼.',techs:['Spring Boot','Java','Mysql'],link:'https://github.com/wefefwf/Final-Project-Nextage',sideBgL:'linear-gradient(135deg,#fff3e0,#ffe0b2)',sideBgR:'linear-gradient(135deg,#fce4ec,#f8bbd0)'},
   {t:'Jv',c:'#ED8B00',type:'deco'},
+  {img:'images/mini.jpg',label:'Reeflo',type:'main',bg:'#2ec4a0,#27b08b',title:'Reeflo — 반려동물 플랫폼',desc:'Spring Boot 기반 반려동물 종합 정보 시스템. 일상 기록, 건강 관리, 추억 보관.',techs:['Spring Boot','Java','Bootstrap'],link:'https://github.com/wefefwf/miniproject',sideBgL:'linear-gradient(135deg,#d4f5eb,#a8e6cf)',sideBgR:'linear-gradient(135deg,#ffe8d6,#ffd4b8)'},
   {t:'SB',c:'#6DB33F',type:'deco'},
   {t:'Ma',c:'#003545',type:'deco'},
-  {img:'images/career.png',label:'Career',type:'nav',bg:'#7e57c2,#b39ddb',title:'경력 & 학력',desc:'Designer to Developer: 성장 기록',techs:['Experience'],link:'#experience',sideBgL:'linear-gradient(135deg,#ede7f6,#d1c4e9)',sideBgR:'linear-gradient(135deg,#e8eaf6,#c5cae9)'},
   {img:'images/todolist2.jpg',label:'Task',type:'toy',bg:'#4fc3f7,#81d4fa',title:'Todolist',desc:'Spring Boot와 JPA를 기반으로 제작된, 캘린더 앱 감성의 할 일 관리 서비스.',techs:['Spring Boot','Jpa','MariaDB'],link:'https://github.com/wefefwf/JPA-toy-project-1',sideBgL:'linear-gradient(135deg,#e1f5fe,#b3e5fc)',sideBgR:'linear-gradient(135deg,#e0f7fa,#b2ebf2)'},
   {t:'Js',c:'#007396',type:'deco'},
   {img:'images/diary.jpg',label:'Weather',type:'toy',bg:'#4dd0e1,#80deea',title:'My Sketchbook Diary',desc:'JPA 기반의 따스한 어린 시절 스케치북 감성의 다이어리.',techs:['Spring Boot','Jpa','MariaDB'],link:'https://github.com/wefefwf/JPA-toy-project-2',sideBgL:'linear-gradient(135deg,#e0f7fa,#b2ebf2)',sideBgR:'linear-gradient(135deg,#e1f5fe,#b3e5fc)'},
@@ -331,14 +331,22 @@ var items = [
 ];
 
 var techIcons = [
-  {img:'images/me2.png', label:'Java'},{img:'images/mini2.jpg',c:'#6DB33F',label:'Spring'},
-  {t:'JS',c:'#F7DF1E',tc:'#000',label:'JavaScript'},{img:'images/nextage2.png',c:'#E34F26',label:'HTML'},
+  {img:'images/me2.png',label:'Java'},
+  {img:'images/career2.png',label:'Oracle'},
+  {t:'JS',c:'#F7DF1E',tc:'#000',label:'JavaScript'},
+  {img:'images/nextage2.png',c:'#E34F26',label:'HTML'},
   {t:'CS',c:'#1572B6',label:'CSS'},
-  {t:'Py',c:'#3776AB',label:'Python'},{t:'Re',c:'#61DAFB',tc:'#000',label:'React'},
-  {img:'images/career2.png',label:'Oracle'},{img:'images/todolist.jpg',c:'#003545',label:'MariaDB'},
-  {t:'My',c:'#4479A1',label:'MySQL'},{img:'images/diary2.png',c:'#FF9900',tc:'#232F3E',label:'AWS'},
-  {t:'Gt',c:'#F05032',label:'Git'},{img:'images/mytreasurearchive2.jpg',c:'#007396',label:'JSP'},
-  {t:'JP',c:'#59666C',label:'JPA'},{t:'Fi',c:'#A259FF',label:'Figma'}
+  {img:'images/mini2.jpg',c:'#6DB33F',label:'Spring'},
+  {t:'Py',c:'#3776AB',label:'Python'},
+  {t:'Re',c:'#61DAFB',tc:'#000',label:'React'},
+  {img:'images/todolist.jpg',c:'#003545',label:'MariaDB'},
+  {t:'Gt',c:'#F05032',label:'Git'},
+  {img:'images/diary2.png',c:'#FF9900',tc:'#232F3E',label:'AWS'},
+  {t:'My',c:'#4479A1',label:'MySQL'},
+  {img:'images/mytreasurearchive2.jpg',c:'#007396',label:'JSP'},
+  {t:'JP',c:'#59666C',label:'JPA'},
+  {t:'Fi',c:'#A259FF',label:'Figma'},
+  {t:'My',c:'#4479A1',label:'MySQL'}
 ];
 
 var skillsData=[
