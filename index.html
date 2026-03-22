@@ -112,10 +112,11 @@ section{padding:5rem 3rem}
 .pj-c{max-width:1100px;margin:0 auto;position:relative;z-index:2}
 .pj-lb{font-family:var(--fd);font-size:1.05rem;font-weight:700;margin-bottom:1rem;margin-top:2rem;display:flex;align-items:center;gap:.6rem}
 .pj-lb::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.06)}
-.pg3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.pg3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;align-items:start;}
 .pc{border-radius:6px;overflow:hidden;background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:none;transition:all .4s;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.5);position:relative}
 .pc:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(0,0,0,.12)}
-.pc-th{width:100%;aspect-ratio:16/10;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+.pc-th{width:100%;position:relative;padding-top:56.25%;overflow:hidden;border-radius:6px}
+.pc-th img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;}
 .pc-ti{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;transition:transform .5s;position:relative}
 .pc:hover .pc-ti{transform:scale(1.06)}
 .pc-ov{position:absolute;inset:0;background:rgba(15,15,26,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .35s;z-index:5;pointer-events:none}
@@ -126,7 +127,15 @@ section{padding:5rem 3rem}
 .pc-t{font-size:.58rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;padding:.18rem .5rem;border-radius:var(--r);background:rgba(46,196,160,.15);color:var(--green-soft)}
 .pc-t.og{background:rgba(255,107,74,.1);color:var(--coral)}
 .pc-tt{font-family:var(--fd);font-size:.95rem;font-weight:700;margin-bottom:.25rem}
-.pc-ds{font-size:.78rem;color:var(--gray);line-height:1.5}
+.pc-ds{
+  font-size:.78rem;
+  color:var(--gray);
+  line-height:1.5;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
 .t1{background:linear-gradient(135deg,rgba(46,196,160,.45),rgba(39,176,139,.25))}
 .t2{background:linear-gradient(135deg,rgba(255,107,74,.35),rgba(255,154,133,.25))}
 .t3{background:linear-gradient(135deg,rgba(155,135,195,.4),rgba(120,100,170,.25))}
@@ -143,23 +152,21 @@ section{padding:5rem 3rem}
 .modal-body{padding:1.6rem}
 .modal-tag{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--coral);margin-bottom:.4rem}
 .modal-title{font-family:var(--fd);font-size:1.5rem;font-weight:800;margin-bottom:.7rem}
-.modal-desc{font-size:.9rem;line-height:1.8;color:var(--dark-soft);margin-bottom:1rem}
+.modal-desc{font-size:.9rem;line-height:1.8;color:var(--dark-soft);margin-bottom:1rem;white-space:pre-line}
 .modal-techs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.3rem}
 .modal-tech{padding:.25rem .7rem;border-radius:var(--r);font-size:.65rem;font-weight:600;background:rgba(46,196,160,.15);color:var(--green-soft)}
+.modal-btn-wrap{display:flex;justify-content:flex-end}
 .modal-btn{display:inline-block;padding:.7rem 1.8rem;background:var(--dark);color:var(--white);border-radius:50px;font-family:var(--fd);font-weight:600;font-size:.82rem;letter-spacing:.5px;transition:all .3s;border:none;cursor:pointer}
 .modal-btn:hover{background:var(--coral);transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,74,.35)}
 
-/* Hero side images - match hcard height, square, same emoji as selected orbit */
 .hero-side-img{position:absolute;z-index:25;border-radius:6px;overflow:hidden;opacity:0;transform:scale(.9);transition:all .45s cubic-bezier(.2,.8,.3,1);pointer-events:none;box-shadow:0 16px 50px rgba(0,0,0,.1);border:none;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;font-size:3.2rem}
 .hero-side-img.left{right:calc(50% + 216px)}
 .hero-side-img.right{left:calc(50% + 216px)}
 .hero-side-img.show{opacity:1;transform:scale(1)}
 
-/* Active nav link */
 .nav-links a.active{color:var(--coral)}
 .nav-links a.active::after{width:100%}
 
-/* Scroll to top button */
 .scroll-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;border-radius:50%;background:var(--dark);color:var(--white);border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;z-index:999;opacity:0;transform:translateY(10px);transition:all .35s;pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,.15)}
 .scroll-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
 .scroll-top:hover{background:var(--coral);transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,74,.35)}
@@ -186,23 +193,6 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 .fu{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}.fu.visible{opacity:1;transform:translateY(0)}
 @media(max-width:900px){section{padding:3.5rem 1.5rem}.orb-item{width:48px;height:48px;margin:-24px 0 0 -24px}.hero-center{width:280px}.hlogo-m{font-size:2.4rem}.hlogo-s{font-size:.85rem;letter-spacing:5px}.hcard{padding:1.2rem}.side-lbl{display:none}.ab-r{flex-direction:column;text-align:center}.ab-st{justify-content:center}.pg3{grid-template-columns:1fr}.val-grid{grid-template-columns:1fr}.scroll-ind{display:none}.hero-side-img{display:none}}
 @media(max-width:600px){.orb-item{width:40px;height:40px;margin:-20px 0 0 -20px}.hero-center{width:220px}.hlogo-m{font-size:1.8rem}.hlogo-s{font-size:.7rem;letter-spacing:3px}.hero-dots{bottom:1rem}}
-.pc-th video { width:100%; height:100%; object-fit:cover; }
-.pc-th {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 비율 유지 (높이/너비 = 9/16) */
-  overflow: hidden;
-  border-radius: 6px; /* 모서리 살짝 둥글게 */
-}
-
-.pc-th img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 이미지 비율 유지하면서 잘라서 채우기 */
-}
 </style>
 </head>
 <body>
@@ -242,9 +232,9 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
       <h2 class="stitle">문제를 코드로<br>해결하는 개발자</h2>
       <p>안녕하세요. 풀스택 개발자 김도영입니다.<br>사용자 경험을 고려한 인터페이스와 안정적인 백엔드 로직을 구현하는 데 관심을 가지고 있습니다.</p>
       <div class="ab-st">
-        <div><div class="stn">6</div><div class="stl">Projects</div></div>
+        <div><div class="stn">5</div><div class="stl">Projects</div></div>
         <div><div class="stn">17</div><div class="stl">Skills</div></div>
-        <div><div class="stn">3</div><div class="stl">Team Projects</div></div>
+        <div><div class="stn">2</div><div class="stl">Team Projects</div></div>
       </div>
     </div>
   </div>
@@ -256,10 +246,10 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
     <div class="val-grid">
       <div class="val-card fu"><div class="val-icon">⚡</div><div class="val-name">Clean Code</div><div class="val-desc">읽기 쉽고 유지보수가 용이한 코드를 작성합니다.</div></div>
       <div class="val-card fu"><div class="val-icon">🔄</div><div class="val-name">Continuous Learning</div><div class="val-desc">새로운 기술과 패턴을 꾸준히 학습하고 적용합니다.</div></div>
-      <div class="val-card fu"><div class="val-icon">🎯</div><div class="val-name">User-Centric</div><div class="val-desc">사용자의 관점에서 직관적인 경험을 설계합니다.</div></div>
+      <div class="val-card fu"><div class="val-icon">👓</div><div class="val-name">User-Centric</div><div class="val-desc">사용자의 관점에서 직관적인 경험을 설계합니다.</div></div>
       <div class="val-card fu"><div class="val-icon">🤝</div><div class="val-name">Collaboration</div><div class="val-desc">팀원과의 소통을 최우선으로 함께 성장합니다.</div></div>
-      <div class="val-card fu"><div class="val-icon">📐</div><div class="val-name">Architecture</div><div class="val-desc">확장 가능하고 견고한 MVC 구조를 설계합니다.</div></div>
-      <div class="val-card fu"><div class="val-icon">✨</div><div class="val-name">Simplicity</div><div class="val-desc">복잡한 문제를 단순하게 풀어내는 것이 실력입니다.</div></div>
+      <div class="val-card fu"><div class="val-icon">🖥️</div><div class="val-name">Architecture</div><div class="val-desc">확장 가능하고 견고한 MVC 구조를 설계합니다.</div></div>
+      <div class="val-card fu"><div class="val-icon">🌿</div><div class="val-name">Simplicity</div><div class="val-desc">복잡한 문제를 단순하게 풀어내는 것이 실력입니다.</div></div>
     </div>
   </div>
 </section>
@@ -279,18 +269,19 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
   </div>
 </section>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-close" id="modalClose">✕</button>
     <div class="modal-img" id="modalImg">
-      <video id="modalVideo" width="100%" height="100%" style="display:none" autoplay muted loop></video>
+      <video id="modalVideo" width="100%" height="100%" style="display:none;object-fit:cover" autoplay muted loop playsinline></video>
     </div>
     <div class="modal-body">
       <div class="modal-tag" id="modalTag"></div>
       <div class="modal-title" id="modalTitle"></div>
       <div class="modal-desc" id="modalDesc"></div>
       <div class="modal-techs" id="modalTechs"></div>
-      <a class="modal-btn" id="modalBtn" href="#" target="_blank">GitHub에서 보기 →</a>
+      <div class="modal-btn-wrap"><a class="modal-btn" id="modalBtn" href="#" target="_blank" rel="noopener noreferrer">GitHub에서 보기 →</a></div>
     </div>
   </div>
 </div>
@@ -319,32 +310,32 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.25)}
 </section>
 <button class="scroll-top" id="scrollTop">↑</button>
 <footer><p>© 2026 dev.folio — Built with ☕ and code</p></footer>
+
 <script>
 var items = [
   {img:'images/me.png',label:'About Me',type:'nav',bg:'#2ec4a0,#1a9e7e',title:'About Me',desc:'안녕하세요. 풀스택 개발자 김도영입니다.',techs:['Profile'],link:'#about',sideBgL:'linear-gradient(135deg,#d4f5eb,#b8ecda)',sideBgR:'linear-gradient(135deg,#e8f5e9,#c8e6c9)'},
   {img:'images/mini.jpg',label:'Reeflo',type:'main',bg:'#2ec4a0,#27b08b',title:'Reeflo — 반려동물 플랫폼',desc:'Spring Boot 기반 반려동물 종합 정보 시스템. 일상 기록, 건강 관리, 추억 보관.',techs:['Spring Boot','Java','Bootstrap'],link:'https://github.com/wefefwf/miniproject',sideBgL:'linear-gradient(135deg,#d4f5eb,#a8e6cf)',sideBgR:'linear-gradient(135deg,#ffe8d6,#ffd4b8)'},
-  {emoji:'🖼️',label:'',type:'deco',bg:'#fce4ec,#f48fb1'},
-  {img:'images/nextage.png',label:'Shopping',type:'main',bg:'#ff6b4a,#ff9a85',title:'Nextage',desc:'Spring Boot · REST API · MySQL 기반의 패션 수선·리폼·제작 C2B 역경매 플랫폼.',techs:['Spring Boot','Java','Mysql'],link:'https://github.com/wefefwf/portfolio',sideBgL:'linear-gradient(135deg,#fff3e0,#ffe0b2)',sideBgR:'linear-gradient(135deg,#fce4ec,#f8bbd0)'},
-  {emoji:'🎨',label:'',type:'deco',bg:'#b39ddb,#9575cd'},
-  {emoji:'📊',label:'미정',type:'main',bg:'#9b87c3,#7e64aa',title:'Data Dashboard',desc:'실시간 데이터 시각화 대시보드. Python API + D3.js 인터랙티브 차트.',techs:['Next.js','Python','D3.js'],link:'https://github.com/wefefwf/portfolio',sideBgL:'linear-gradient(135deg,#ede7f6,#d1c4e9)',sideBgR:'linear-gradient(135deg,#e8eaf6,#c5cae9)'},
-  {emoji:'🌿',label:'',type:'deco',bg:'#80cbc4,#4db6ac'},
-  {emoji:'🎵',label:'',type:'deco',bg:'#ffe082,#ffd54f'},
-  {emoji:'💼',label:'Career',type:'nav',bg:'#7e57c2,#b39ddb',title:'경력 & 학력',desc:'개발자로서의 경력과 학력을 확인할 수 있습니다.',techs:['Experience'],link:'#experience',sideBgL:'linear-gradient(135deg,#ede7f6,#d1c4e9)',sideBgR:'linear-gradient(135deg,#e8eaf6,#c5cae9)'},
+  {t:'HT',c:'#E34F26',type:'deco'},
+  {img:'images/nextage.png',label:'Shopping',type:'main',bg:'#ff6b4a,#ff9a85',title:'Nextage',desc:'Spring Boot · REST API · MySQL 기반의 패션 수선·리폼·제작 C2B 역경매 플랫폼.',techs:['Spring Boot','Java','Mysql'],link:'https://github.com/wefefwf/Final-Project-Nextage',sideBgL:'linear-gradient(135deg,#fff3e0,#ffe0b2)',sideBgR:'linear-gradient(135deg,#fce4ec,#f8bbd0)'},
+  {t:'Jv',c:'#ED8B00',type:'deco'},
+  {t:'SB',c:'#6DB33F',type:'deco'},
+  {t:'Ma',c:'#003545',type:'deco'},
+  {img:'images/career.png',label:'Career',type:'nav',bg:'#7e57c2,#b39ddb',title:'경력 & 학력',desc:'Designer to Developer: 성장 기록',techs:['Experience'],link:'#experience',sideBgL:'linear-gradient(135deg,#ede7f6,#d1c4e9)',sideBgR:'linear-gradient(135deg,#e8eaf6,#c5cae9)'},
   {img:'images/todolist2.jpg',label:'Task',type:'toy',bg:'#4fc3f7,#81d4fa',title:'Todolist',desc:'Spring Boot와 JPA를 기반으로 제작된, 캘린더 앱 감성의 할 일 관리 서비스.',techs:['Spring Boot','Jpa','MariaDB'],link:'https://github.com/wefefwf/JPA-toy-project-1',sideBgL:'linear-gradient(135deg,#e1f5fe,#b3e5fc)',sideBgR:'linear-gradient(135deg,#e0f7fa,#b2ebf2)'},
-  {emoji:'🔥',label:'',type:'deco',bg:'#ff8a65,#ffab91'},
+  {t:'Js',c:'#007396',type:'deco'},
   {img:'images/diary.jpg',label:'Weather',type:'toy',bg:'#4dd0e1,#80deea',title:'My Sketchbook Diary',desc:'JPA 기반의 따스한 어린 시절 스케치북 감성의 다이어리.',techs:['Spring Boot','Jpa','MariaDB'],link:'https://github.com/wefefwf/JPA-toy-project-2',sideBgL:'linear-gradient(135deg,#e0f7fa,#b2ebf2)',sideBgR:'linear-gradient(135deg,#e1f5fe,#b3e5fc)'},
-  {emoji:'💎',label:'',type:'deco',bg:'#ef9a9a,#e57373'},
+  {t:'Or',c:'#F80000',type:'deco'},
   {img:'images/mytreasurearchive.jpg',label:'Blog',type:'toy',bg:'#66bb6a,#81c784',title:'My Treasure Archive',desc:'Spring Boot 기반의 내가 좋아하는 노래, 영화, 맛집을 기록하는 보물함',techs:['Spring Boot','Java','Mysql'],link:'https://github.com/wefefwf/MyBatis-toy-project-1',sideBgL:'linear-gradient(135deg,#e8f5e9,#c8e6c9)',sideBgR:'linear-gradient(135deg,#f1f8e9,#dcedc8)'},
-  {emoji:'🌊',label:'',type:'deco',bg:'#64b5f6,#90caf9'},
-  {emoji:'🍀',label:'',type:'deco',bg:'#aed581,#c5e1a5'}
+  {t:'AW',c:'#FF9900',tc:'#232F3E',type:'deco'},
+  {t:'Fl',c:'#02569B',type:'deco'}
 ];
 
 var techIcons = [
   {img:'images/me2.png', label:'Java'},{img:'images/mini2.jpg',c:'#6DB33F',label:'Spring'},
   {t:'JS',c:'#F7DF1E',tc:'#000',label:'JavaScript'},{img:'images/nextage2.png',c:'#E34F26',label:'HTML'},
-  {t:'CS',c:'#1572B6',label:'CSS'},{t:'Bs',c:'#7952B3',label:'Bootstrap'},
+  {t:'CS',c:'#1572B6',label:'CSS'},
   {t:'Py',c:'#3776AB',label:'Python'},{t:'Re',c:'#61DAFB',tc:'#000',label:'React'},
-  {t:'Or',c:'#F80000',label:'Oracle'},{img:'images/todolist.jpg',c:'#003545',label:'MariaDB'},
+  {img:'images/career2.png',label:'Oracle'},{img:'images/todolist.jpg',c:'#003545',label:'MariaDB'},
   {t:'My',c:'#4479A1',label:'MySQL'},{img:'images/diary2.png',c:'#FF9900',tc:'#232F3E',label:'AWS'},
   {t:'Gt',c:'#F05032',label:'Git'},{img:'images/mytreasurearchive2.jpg',c:'#007396',label:'JSP'},
   {t:'JP',c:'#59666C',label:'JPA'},{t:'Fi',c:'#A259FF',label:'Figma'}
@@ -365,95 +356,68 @@ var skillsData=[
 var allProjects=[
   {
     title:'Reeflo — 반려동물 플랫폼',
-    desc:'반려동물 일상 기록과 건강 관리, 추억 보관 기능을 제공하는 플랫폼\n\n문제: 반려동물 정보를 체계적으로 관리하기 어려움\n해결: 일상 기록, 건강 관리, 추억 저장 기능을 통합한 반려동물 관리 플랫폼 설계\n',
-    techs:['Spring Boot','Java','Bootstrap'],
+    desc:'반려동물 일상 기록, 건강 관리, 추억 보관 플랫폼\n\n문제: 반려동물 정보를 체계적으로 관리하기 어려움\n해결: 일상 기록, 건강 관리, 추억 저장 기능을 통합한 반려동물 관리 플랫폼 설계',
+    techs:['Spring Boot','Java','BS'],
     link:'https://github.com/wefefwf/miniproject',
-    emoji:'🐾',
-    bg:'t1',
-    type:'main',
-    thumbnail: 'images/mini2.jpg'
+    emoji:'🐾',bg:'t1',type:'main',
+    thumbnail:'images/mini2.jpg'
   },
-
   {
     title:'Nextage - 옷 수선/제작 역경매 플랫폼',
-    desc:'프로젝트 소개: 수선 의뢰자와 공급업체를 연결하는 C2B 역경매 플랫폼\n\n문제: 수선 서비스 가격 기준이 불투명하고 여러 업체 견적 비교가 어려움\n해결: 의뢰자가 수선 요청을 등록하고 공급업체가 입찰하는 역경매 구조 설계\n',
-    techs:['Spring Boot','Java','Bootstrap'],
+    desc:'수선 의뢰자와 공급업체를 연결하는 C2B 역경매 플랫폼\n\n문제: 수선 서비스 가격 기준이 불투명하고 여러 업체 견적 비교가 어려움\n해결: 의뢰자가 수선 요청을 등록하고 공급업체가 입찰하는 역경매 구조 설계',
+    techs:['Spring Boot','Java','BS'],
     link:'https://github.com/wefefwf/Final-Project-Nextage',
-    emoji:'🛒',
-    bg:'t2',
-    type:'main',
-    thumbnail: 'images/nextage.png'
+    emoji:'🛒',bg:'t2',type:'main',
+    thumbnail:'images/nextage.png'
   },
-
-  {
-    title:'미정',
-    desc:'데이터를 시각적으로 분석할 수 있는 대시보드\n\n문제: 복잡한 데이터를 직관적으로 파악하기 어려움\n해결: 인터랙티브 차트를 활용한 데이터 시각화 기능 구현\n',
-    techs:['Next.js','Python','D3.js'],
-    link:'https://github.com/wefefwf/portfolio',
-    emoji:'📊',
-    bg:'t3',
-    type:'main'
-  },
-
   {
     title:'Todolist',
-    desc:'일정과 할 일을 관리하는 캘린더형 서비스\n\n문제: 할 일을 체계적으로 관리하기 어려움\n해결: CRUD 기반 일정 관리 기능과 캘린더 UI 구현\n',
+    desc:'일정과 할 일을 관리하는 캘린더형 서비스\n\n문제: 할 일을 체계적으로 관리하기 어려움\n해결: CRUD 기반 일정 관리 기능과 캘린더 UI 구현',
     techs:['Spring Boot','Jpa','MariaDB'],
     link:'https://github.com/wefefwf/JPA-toy-project-1',
-    emoji:'📝',
-    bg:'t4',
-    type:'toy',
-    video: 'videos/todolist.mp4',
-    thumbnail: 'images/todolist2.jpg'
+    emoji:'📝',bg:'t4',type:'toy',
+    video:'videos/todolist.mp4',
+    thumbnail:'images/todolist2.jpg'
   },
-
   {
     title:'My Sketchbook Diary',
-    desc:'감성을 기록하는 스케치북 스타일 다이어리\n\n문제: 일상을 자유롭게 기록하고 관리할 공간이 필요함\n해결: CRUD 기반 일기 작성 및 기록 관리 기능 구현\n',
+    desc:'감성을 기록하는 스케치북 스타일 다이어리\n\n문제: 일상을 자유롭게 기록하고 관리할 공간이 필요함\n해결: CRUD 기반 일기 작성 및 기록 관리 기능 구현',
     techs:['Spring Boot','Jpa','MariaDB'],
     link:'https://github.com/wefefwf/JPA-toy-project-2',
-    emoji:'🌤️',
-    bg:'t5',
-    type:'toy',
-    video: 'videos/diary.mp4',
-    thumbnail: 'images/diary.jpg'
+    emoji:'🌤️',bg:'t5',type:'toy',
+    video:'videos/diary.mp4',
+    thumbnail:'images/diary.jpg'
   },
-
   {
     title:'My Treasure Archive',
-    desc:'좋아하는 콘텐츠를 기록하는 개인 아카이브\n\n문제: 취향 콘텐츠를 체계적으로 정리하기 어려움\n해결: 영화, 음악, 맛집 등을 기록하고 관리하는 아카이브 서비스 구현\n',
+    desc:'좋아하는 콘텐츠를 기록하는 개인 아카이브\n\n문제: 취향 콘텐츠를 체계적으로 정리하기 어려움\n해결: 영화, 음악, 맛집 등을 기록하고 관리하는 아카이브 서비스 구현',
     techs:['Spring Boot','Java','Mysql'],
     link:'https://github.com/wefefwf/MyBatis-toy-project-1',
-    emoji:'✍️',
-    bg:'t6',
-    type:'toy',
-    video: 'videos/mytreasurearchive.mp4',
-    thumbnail: 'images/mytreasurearchive.jpg'
+    emoji:'✍️',bg:'t6',type:'toy',
+    video:'videos/mytreasurearchive.mp4',
+    thumbnail:'images/mytreasurearchive.jpg'
   }
 ];
 
 // ===== ORBIT =====
 var leftAngle=0,rightAngle=0,leftPaused=false,rightPaused=false,SPEED=0.0015;
 function getOrbitR(){var h=window.innerHeight,w=window.innerWidth;if(w<600)return h*.24;if(w<900)return h*.30;return h*.36}
-function createOrbitItems(pid,arr,type){
+function createOrbitItems(pid,arr){
   var p=document.getElementById(pid);
   p.querySelectorAll('.orb-item').forEach(function(e){e.remove()});
   var n=arr.length;
-
   arr.forEach(function(d,i){
     var el=document.createElement('div');
     var isDeco=(d.type==='deco');
     el.className='orb-item'+(isDeco?' deco':'');
     el.dataset.index=i;
     el.dataset.baseAngle=((2*Math.PI*i)/n).toString();
-
     if(d.img){
       el.innerHTML='<div class="oi" style="background:url('+d.img+') center/cover no-repeat"></div>'+(d.label?'<span class="ol">'+d.label+'</span>':'');
     }else{
       var bgStr=d.bg?'background:linear-gradient(135deg,'+d.bg+')':'';
       el.innerHTML='<div class="oi" style="'+bgStr+'">'+(d.emoji||d.t||'')+'</div>'+(d.label?'<span class="ol">'+d.label+'</span>':'');
     }
-
     p.appendChild(el);
   });
 }
@@ -495,34 +459,33 @@ function setActive(idx){
   document.getElementById('cTt').textContent=d.title;
   document.getElementById('cDs').textContent=d.desc;
   document.getElementById('cTc').innerHTML=d.techs.map(function(t){return '<span class="hcard-tech">'+t+'</span>'}).join('');
-
-  // Side images: left = project emoji, right = 1:1 paired tech icon
   updateSideSize();
   var pairedTech=techIcons[idx]||techIcons[0];
   if(d.img){
     sideL.innerHTML='<div style="width:100%;height:100%;background:url('+d.img+') center/cover no-repeat"></div>';
   }else{
-    sideL.innerHTML=d.emoji;
+    sideL.innerHTML=d.emoji||'';
   }
   sideL.style.background=d.sideBgL||'rgba(255,255,255,.5)';
   if(pairedTech.img){
-  sideR.innerHTML =
-  '<div style="width:100%;height:100%;background:url('+pairedTech.img+') center/cover no-repeat"></div>';
-}else{
-  sideR.innerHTML =
-  '<span style="font-size:1.6rem;font-weight:800;color:'+
-  (pairedTech.tc||'#fff')+'">'+pairedTech.t+'</span>';
+    sideR.innerHTML='<div style="width:100%;height:100%;background:url('+pairedTech.img+') center/cover no-repeat"></div>';
+  }else{
+    sideR.innerHTML='<span style="font-size:1.6rem;font-weight:800;color:'+(pairedTech.tc||'#fff')+'">'+pairedTech.t+'</span>';
+  }
+  if(pairedTech.img){
+  sideR.innerHTML='<div style="width:100%;height:100%;background:url('+pairedTech.img+') center/cover no-repeat"></div>';
+  sideR.style.background = pairedTech.c || 'rgba(255,255,255,.5)';
+} else {
+  sideR.innerHTML='<span style="font-size:1.6rem;font-weight:800;color:'+(pairedTech.tc||pairedTech.c||'#555')+'">'+pairedTech.t+'</span>';
+  sideR.style.background = 'rgba(255,255,255,.5)';  // 글래스
 }
-  sideR.style.background=pairedTech.c;
-  // Highlight paired tech in right orbit
   document.querySelectorAll('#spinRight .orb-item').forEach(function(el,i){el.classList.toggle('active',i===idx)});
   sideL.classList.add('show');sideR.classList.add('show');
-
   var btn=document.getElementById('cBtn');
   if(d.type==='nav'){
     btn.textContent='GO TO SECTION →';
     btn.onclick=function(){document.querySelector(d.link).scrollIntoView({behavior:'smooth'})};
-  } else {
+  }else{
     btn.textContent='VIEW ON GITHUB →';
     btn.onclick=function(){window.open(d.link,'_blank')};
   }
@@ -555,148 +518,184 @@ function attachOrbEvents(){
   });
 }
 function buildHero(){
-  createOrbitItems('spinLeft',items,'project');
-  createOrbitItems('spinRight',techIcons,'tech');
+  createOrbitItems('spinLeft',items);
+  createOrbitItems('spinRight',techIcons);
   setActive(activeIdx);attachOrbEvents();
 }
-buildHero();window.addEventListener('resize',function(){buildHero();updateSideSize()});animateOrbits();
+buildHero();
+window.addEventListener('resize',function(){buildHero();updateSideSize()});
+animateOrbits();
 document.getElementById('spinLeft').addEventListener('mouseenter',function(){leftPaused=true});
 document.getElementById('spinLeft').addEventListener('mouseleave',function(){leftPaused=false});
 document.getElementById('spinRight').addEventListener('mouseenter',function(){rightPaused=true});
 document.getElementById('spinRight').addEventListener('mouseleave',function(){rightPaused=false});
 
-// ===== SKILLS (auto-scrolling track) =====
-(function(){var track=document.getElementById('skTrack');
-function mk(s){var e=document.createElement('div');e.className='sk';e.innerHTML='<div class="sk-icon" style="background:'+s.c+'"><span style="color:'+(s.tc||'#fff')+'">'+s.t+'</span></div><span class="sk-name">'+s.n+'</span>';return e}
-skillsData.forEach(function(s){track.appendChild(mk(s))});
-skillsData.forEach(function(s){track.appendChild(mk(s))});
+// ===== SKILLS =====
+(function(){
+  var track=document.getElementById('skTrack');
+  function mk(s){
+    var e=document.createElement('div');e.className='sk';
+    e.innerHTML='<div class="sk-icon" style="background:'+s.c+'"><span style="color:'+(s.tc||'#fff')+'">'+s.t+'</span></div><span class="sk-name">'+s.n+'</span>';
+    return e;
+  }
+  skillsData.forEach(function(s){track.appendChild(mk(s))});
+  skillsData.forEach(function(s){track.appendChild(mk(s))});
 })();
 
 // ===== PROJECT CARDS =====
 function mkCard(p, i){
-  return `
-  <div class="pc fu" data-idx="${i}">
-    <div class="pc-th">
-      <img src="${p.thumbnail}" alt="${p.title} thumbnail" />
-      <div class="pc-ov"><span>Click to view</span></div>
-    </div>
-    <div class="pc-if">
-      <div class="pc-tg">
-        ${p.techs.map((t,j)=>`<span class="pc-t${j===1?' og':''}">${t}</span>`).join('')}
-      </div>
-      <div class="pc-tt">${p.title}</div>
-      <div class="pc-ds">${p.desc.substring(0,55).replace(/\n/g,'<br>')}...</div>
-    </div>
-  </div>`;
+  var thumbHtml = p.thumbnail
+    ? '<img src="'+p.thumbnail+'" alt="'+p.title+' thumbnail" />'
+    : '<div class="pc-ti '+p.bg+'">'+p.emoji+'</div>';
+  return '<div class="pc fu" data-idx="'+i+'">'
+    +'<div class="pc-th">'+thumbHtml+'<div class="pc-ov"><span>Click to view</span></div></div>'
+    +'<div class="pc-if">'
+    +'<div class="pc-tg">'+p.techs.map(function(t,j){return '<span class="pc-t'+(j===1?' og':'')+'">'+t+'</span>'}).join('')+'</div>'
+    +'<div class="pc-tt">'+p.title+'</div>'
+    +'<div class="pc-ds">'+p.desc.split('\n')[0].substring(0,30)+'...</div>'
+    +'</div></div>';
 }
-var mainP=allProjects.filter(function(p){return p.type==='main'});
-var toyP=allProjects.filter(function(p){return p.type==='toy'});
-document.getElementById('mP').innerHTML=mainP.map(function(p,i){return mkCard(p,i)}).join('');
-document.getElementById('tP').innerHTML=toyP.map(function(p,i){return mkCard(p,i+mainP.length)}).join('');
-document.querySelectorAll('.pc').forEach(function(c){
-  c.addEventListener('click',function(){openModal(parseInt(c.dataset.idx))});
-});
-document.addEventListener('click',function(e){
-  var card=e.target.closest('.pc');
-  if(!card)return;
 
-  var idx=card.dataset.idx;
-  var p=allProjects[idx];
+var mainP = allProjects.filter(function(p){return p.type==='main'});
+var toyP  = allProjects.filter(function(p){return p.type==='toy'});
+document.getElementById('mP').innerHTML = mainP.map(function(p,i){return mkCard(p,i)}).join('');
+document.getElementById('tP').innerHTML = toyP.map(function(p,i){return mkCard(p,mainP.length+i)}).join('');
 
-  document.getElementById('modalTag').textContent=p.type==='main'?'MAIN PROJECT':'TOY PROJECT';
-  document.getElementById('modalTitle').textContent=p.title;
-  document.getElementById('modalDesc').textContent=p.desc;
-  document.getElementById('modalTechs').innerHTML=p.techs.map(function(t){
-    return '<span class="modal-tech">'+t+'</span>'
-  }).join('');
-
-  document.getElementById('modalBtn').href=p.link;
-
-  // ⭐ 여기 추가
-  if(p.video){
-    modalVideo.src=p.video;
-    modalVideo.style.display='block';
-    modalVideo.play();
-    modalImg.style.background='none';
-  }else{
-    modalVideo.pause();
-    modalVideo.style.display='none';
-    modalImg.style.background='';
-    modalImg.textContent=p.emoji;
-  }
-
-  document.getElementById('modalOverlay').classList.add('show');
-});
 // ===== MODAL =====
-
-const modalOverlay = document.getElementById('modalOverlay');
-const modalClose = document.getElementById('modalClose');
-var modalVideo = document.getElementById('modalVideo');
-var modalImg = document.getElementById('modalImg');
-
+var modalOverlay = document.getElementById('modalOverlay');
+var modalVideo   = document.getElementById('modalVideo');
+var modalImg     = document.getElementById('modalImg');
+var modalBtn     = document.getElementById('modalBtn');
 
 function openModal(idx){
-  var p=allProjects[idx];if(!p)return;
-  document.getElementById('modalImg').innerHTML=`<video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:6px;"><source src="${project.video}" type="video/mp4"></video>`;
-  document.getElementById('modalTag').textContent=p.type==='main'?'MAIN PROJECT':'TOY PROJECT';
-  document.getElementById('modalTitle').textContent=p.title;
-  document.getElementById('modalDesc').textContent=p.desc;
-  document.getElementById('modalTechs').innerHTML=p.techs.map(function(t){return '<span class="modal-tech">'+t+'</span>'}).join('');
-  document.getElementById('modalBtn').href=p.link;
-  document.getElementById('modalOverlay').classList.add('show');
-  document.body.style.overflow='hidden';
+  var p = allProjects[idx];
+  if(!p) return;
+  document.getElementById('modalTag').textContent   = p.type==='main' ? 'MAIN PROJECT' : 'TOY PROJECT';
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalDesc').textContent  = p.desc;
+  document.getElementById('modalTechs').innerHTML   = p.techs.map(function(t){
+    return '<span class="modal-tech">'+t+'</span>';
+  }).join('');
+  modalBtn.href = p.link;
+
+ // 수정 코드
+if(p.video){
+    modalVideo.style.display = 'block';
+    modalVideo.src = p.video;
+    modalImg.style.background = '#000';
+    Array.from(modalImg.childNodes).forEach(function(node){
+      if(node !== modalVideo) modalImg.removeChild(node);
+    });
+    modalVideo.load();
+    // load 후 재생 보장
+    modalVideo.addEventListener('canplay', function handler(){
+      modalVideo.play().catch(function(){});
+      modalVideo.removeEventListener('canplay', handler);
+    });
+  } else {
+    modalVideo.pause();
+    modalVideo.src = '';
+    modalVideo.style.display = 'none';
+    modalImg.style.background = '';
+    Array.from(modalImg.childNodes).forEach(function(node){
+      if(node !== modalVideo) modalImg.removeChild(node);
+    });
+    var span = document.createElement('span');
+    span.style.fontSize = '3rem';
+    span.textContent = p.emoji || '🚀';
+    modalImg.appendChild(span);
+  }
+
+  modalOverlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
 }
-document.getElementById('modalClose').addEventListener('click',closeModal);
-document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
-function closeModal(){document.getElementById('modalOverlay').classList.remove('show');document.body.style.overflow=''}
+
+function closeModal(){
+    modalVideo.pause();
+    modalVideo.removeAttribute('src');  // ← src='' 대신 완전 제거
+    modalVideo.load();                  // ← 리셋 확정
+    modalOverlay.classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+// 카드 클릭 → 모달 (단일 이벤트 위임, GitHub 버튼 클릭은 제외)
+document.getElementById('mP').addEventListener('click', function(e){
+  if(e.target.closest('.modal-btn')) return;
+  var card = e.target.closest('.pc');
+  if(card) openModal(parseInt(card.dataset.idx));
+});
+document.getElementById('tP').addEventListener('click', function(e){
+  if(e.target.closest('.modal-btn')) return;
+  var card = e.target.closest('.pc');
+  if(card) openModal(parseInt(card.dataset.idx));
+});
+
+// 모달 닫기
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', function(e){
+  if(e.target === this) closeModal();
+});
+
+// GitHub 버튼 클릭 시 모달 안 닫히게 (버블링 차단)
+modalBtn.addEventListener('click', function(e){
+  e.stopPropagation();
+});
 
 // ===== NAV / SCROLL =====
-window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
-var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.fu').forEach(function(el){obs.observe(el)});
-document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+window.addEventListener('scroll',function(){
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+  updateNav();
+});
 
-// Nav active highlight on scroll
-var navSections=document.querySelectorAll('section[id]');
-var navLinks=document.querySelectorAll('.nav-links a');
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){if(en.isIntersecting) en.target.classList.add('visible')});
+},{threshold:.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fu').forEach(function(el){obs.observe(el)});
+
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  if(a.id === 'modalBtn') return;
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+var navSections = document.querySelectorAll('section[id]');
 function updateNav(){
-  var scrollY=window.scrollY+100;
+  var scrollY = window.scrollY + 100;
   navSections.forEach(function(sec){
-    var top=sec.offsetTop,h=sec.offsetHeight,id=sec.getAttribute('id');
-    var link=document.querySelector('.nav-links a[href="#'+id+'"]');
+    var id   = sec.getAttribute('id');
+    var link = document.querySelector('.nav-links a[href="#'+id+'"]');
     if(link){
-      if(scrollY>=top&&scrollY<top+h){link.classList.add('active')}
-      else{link.classList.remove('active')}
+      if(scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight){
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
     }
   });
 }
-window.addEventListener('scroll',function(){
-  updateNav();
-  document.getElementById('scrollTop').classList.toggle('show',window.scrollY>400);
+
+document.getElementById('scrollTop').addEventListener('click',function(){
+  window.scrollTo({top:0,behavior:'smooth'});
 });
 
-document.getElementById('scrollTop').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
-
-var clickableIdxs=[];items.forEach(function(d,i){if(d.type!=='deco')clickableIdxs.push(i)});
-var ciI=0,cy=setInterval(function(){ciI=(ciI+1)%clickableIdxs.length;setActive(clickableIdxs[ciI])},4000);
-document.getElementById('hero').addEventListener('mouseenter',function(){clearInterval(cy)});
-document.getElementById('hero').addEventListener('mouseleave',function(){cy=setInterval(function(){ciI=(ciI+1)%clickableIdxs.length;setActive(clickableIdxs[ciI])},4000)});
-</script>
-<script>
-// ===== MODAL 기능 =====
-video: 'videos/portfolio.mp4'
-
-// ===== Scroll Top 버튼 =====
-var scrollTopBtn = document.getElementById('scrollTop');
-window.addEventListener('scroll', function(){
-  if(window.scrollY > 400){
-    scrollTopBtn.classList.add('show');
-  } else {
-    scrollTopBtn.classList.remove('show');
-  }
-});
-scrollTopBtn.addEventListener('click', function(){
-  window.scrollTo({ top:0, behavior:'smooth' });
+// 자동 슬라이드
+var clickableIdxs = [];
+items.forEach(function(d,i){if(d.type!=='deco') clickableIdxs.push(i)});
+var ciI = 0;
+var cy = setInterval(function(){
+  ciI = (ciI+1) % clickableIdxs.length;
+  setActive(clickableIdxs[ciI]);
+}, 4000);
+document.getElementById('hero').addEventListener('mouseenter', function(){clearInterval(cy)});
+document.getElementById('hero').addEventListener('mouseleave', function(){
+  cy = setInterval(function(){
+    ciI = (ciI+1) % clickableIdxs.length;
+    setActive(clickableIdxs[ciI]);
+  }, 4000);
 });
 </script>
 </body>
