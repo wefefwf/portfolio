@@ -623,12 +623,23 @@ if(p.video){
 }
 
 function closeModal(){
-    modalVideo.pause();
-    modalVideo.removeAttribute('src');  // ← src='' 대신 완전 제거
-    modalVideo.load();                  // ← 리셋 확정
-    modalOverlay.classList.remove('show');
-    document.body.style.overflow = '';
+  modalVideo.pause();
+  modalVideo.removeAttribute('src');
+  modalVideo.load(); // 영상 완전 초기화
+
+  modalOverlay.classList.remove('show');
+  document.body.style.overflow = '';
 }
+
+// 닫기 버튼
+document.getElementById('modalClose').addEventListener('click', closeModal);
+
+// 배경 클릭 닫기
+modalOverlay.addEventListener('click', function(e){
+  if(e.target === modalOverlay){
+    closeModal();
+  }
+});
 
 // 카드 클릭 → 모달 (단일 이벤트 위임, GitHub 버튼 클릭은 제외)
 document.getElementById('mP').addEventListener('click', function(e){
