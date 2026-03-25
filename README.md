@@ -1,7 +1,5 @@
 # dev.folio
 
-풀스택 개발자 김도영의 개발 포트폴리오 사이트입니다.
-
 ## Tech Stack
 
 `HTML` `CSS` `Vanilla JavaScript`
@@ -40,9 +38,3 @@
 ## Skills
 
 Java / Spring Boot / JPA / MyBatis / JavaScript / HTML5 / CSS3 / Bootstrap / Python / React / Oracle / MariaDB / MySQL / AWS / Git / JSP / Figma / Flutter
-
-## Contact
-
-- Email: kidziro09@gmail.com
-- GitHub: github.com/wefefwf
-- Blog: blog.naver.com/littlesugartomato
