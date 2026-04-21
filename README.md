@@ -37,4 +37,4 @@
 
 ## Skills
 
-Java / Spring Boot / JPA / MyBatis / JavaScript / HTML5 / CSS3 / Bootstrap / Python / React / Oracle / MariaDB / MySQL / AWS / Git / JSP / Figma / Flutter
+Java / Spring Boot / JPA / MyBatis / JavaScript / HTML5 / CSS3 / Bootstrap / Python / Oracle / MariaDB / MySQL / AWS / Git / JSP / Figma / Flutter
